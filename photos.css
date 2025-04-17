@@ -1,0 +1,28 @@
+.mapClass {
+    height: 300px;
+}
+
+.h4 {
+    align-items: left;
+}
+.row {
+    width: 100%;
+}
+
+.statsTable {
+    color : black
+}
+
+.chart-container {
+    margin-top: 35px;
+    align-content: center;
+    height: 200px
+ }
+
+ 
+ body{
+    line-height:1;
+    background:#fafafa;
+    font:14px/1.4 Palatino,"Book Antiqua",Helvetica,Georgia,Arial,sans-serif;
+    color:#2b2b3b
+}

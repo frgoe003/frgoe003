@@ -1,0 +1,112 @@
+body{
+  background-color:#ffffff;
+  background-image: url('assets/bg.png');
+  -webkit-background-size: 100%; 
+  -moz-background-size: 100%; 
+  -o-background-size: 100%; 
+  background-size: 100%; 
+  -webkit-background-size: cover; 
+  -moz-background-size: cover; 
+  -o-background-size: cover; 
+  background-size: cover;
+}
+#canvas{
+  border:3px solid black;
+  text-align:center;
+  border-radius: 10px;
+}
+
+#content{
+  margin-top:20px;
+}
+
+#title{
+  color: black; 
+}
+
+.bg-light{
+  font-family: 'monospace', Courier;
+  background-color: #efd8b0;
+  opacity: 0.95;
+}
+.navbar-brand{
+  font-weight: 400;
+  font-size: 20px;
+}
+
+.textLabel{
+  color: #111; 
+  font-family: 'monospace', Courier;
+  font-size: 23px;
+  margin-top: 5px;
+  font-weight: 600;
+}
+
+#canvasWrapper{
+  opacity: 0.98;
+}
+
+#valWrapper{
+  background-color:#ffffff;
+  opacity: 0.98;
+  border-radius: 10px;
+  border:3px solid black;
+}
+
+canvas{
+  display: inline;
+  background-color:#ffffff;
+}
+
+.row{
+  display: flex;
+}
+
+.col{
+  text-align:center;
+}
+
+#interface{
+}
+
+input[type="range"] {
+	width:100%;
+}
+
+input[type=range] {
+  -webkit-appearance: none;
+  background-color: silver;
+  height:10px;
+  margin-top:15px;
+  margin-bottom:15px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+     -webkit-appearance: none;
+    background-color: #666;
+    width: 10px;
+    height: 26px;
+}
+
+input[type="button"] {
+  padding:5px;
+  margin-bottom:5px;
+  margin-top:5px;
+  width:100%;
+  
+}
+h1{
+  margin-bottom:5px;
+  margin-top:5px;
+}
+
+#startButton{
+    background-color: greenyellow;
+}
+#colors{
+  color: #f44336;
+  color: #22c4f2;
+  color: #ffe82a;
+}
+.radio {
+}

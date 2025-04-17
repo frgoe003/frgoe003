@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en" data-lt-installed="true"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Diffusion </title>
+
+<head>
+
+    <meta name="viewport" content="width=device-width">
+    <meta name="theme-color" content="#f14c00">
+    
+    <meta name="description" content="Personal webpage">
+    <meta name="author" content="Franz Goerlich">
+    <meta property="og:title" content="About - Franz Goerlich">
+    <meta property="og:description" content="Personal webpage">
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" type="text/css" href="./main.css">
+    
+    <link rel="icon" href="festinalente.svg" type="image/svg+xml">
+        
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/katex.min.css" integrity="sha384-D+9gmBxUQogRLqvARvNLmA9hS2x//eK1FhVb9PiU86gmcrBrJAQT8okdJ4LMp2uv" crossorigin="anonymous">
+
+    <!-- The loading of KaTeX is deferred to speed up page rendering -->
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/katex.min.js" integrity="sha384-483A6DwYfKeDa0Q52fJmxFXkcPCFfnXMoXblOkJ4JcA8zATN6Tm78UNL72AKk+0O" crossorigin="anonymous"></script>
+
+    <!-- To automatically render math in text elements, include the auto-render extension: -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/contrib/auto-render.min.js" integrity="sha384-yACMu8JWxKzSp/C1YV86pzGiQ/l1YUfE8oPuahJQxzehAjEt2GiQuy/BIvl9KyeF" crossorigin="anonymous"
+        onload="renderMathInElement(document.body);"></script>
+
+</head>
+
+
+<body>
+<div class="container">
+<header><a href="https://n.ethz.ch/~fgoerlich/">Home</a></header>
+<nav class="site">
+<a href="https://n.ethz.ch/~fgoerlich/misc.html">Misc</a>
+<a href="https://n.ethz.ch/~fgoerlich/">About</a>
+
+
+
+</nav>
+<article>
+    <div class="flex justify-content-center">
+        <h1>Diffusion</h1>
+        <div class="d-flex justify-content-center" style="margin-bottom: 10px;">
+            <canvas id="canvas"></canvas>
+        </div>
+    </div>
+    
+    <div class="flex justify-content-center">
+        <button id="start">Step</button>
+        <button id="autoStart">Auto Diffuse</button>
+        <button id="reset1">Reset</button>
+        <input id="ballCnt" type="range" min="1" max="100">Add x particles</input>
+        <input id="speedCnt" type="range" min="1" max="999">Diffusivity</input>
+    </div>
+    <div>
+        <h2>From discrete to continuous space</h2>
+
+        To get a feeling of the statistical nature of diffusion, we can simulate it in a 1D discrete space. 
+        <br>
+        Try clicking onto the cells below to add particles. 
+
+        <div class="d-flex justify-content-center">
+            <div class="d-flex justify-content-center" style="margin-bottom: 10px;">
+                <canvas id="canvas2d"></canvas>
+            </div>
+        </div>
+        <div class="flex justify-content-center">
+            <button id="start2d">Step</button>
+            <button id="reset2">Reset</button>
+
+        </div>
+
+        In each step, each particle has a 50% chance to move one cell to the left or to the right. Mathematically, we can define a density for each cell \(\\rho) which describes 
+        how many particles are in that cell. Intuitively, the probability of a particle to move to the left or to the right is then proportional to the density of the neighboring cells.
+        For a given cell n that has two neighbors (e.g. cell 5), the change in that density for each time step is then given by the difference of the densities of the neighboring cells:
+
+        <div id="eq1"></div>
+        <div id="eq2"></div>
+
+        As you can see in the last equation, we are subtracting the change over the right barrier from the change over the left barrier. So formally we describe a difference of differences:
+
+        <div id="eq3"></div>
+        
+        So to describe the change in density of one cell over time, we look at the difference of the differences of the densities of the neighboring cells. Since we want to 
+        understand what this change looks like in a continuous space, first let us take a look at how quickly the density for one cell changes over time. To get this rate expression, we just have to
+        divide the change in density by the time step:  
+
+        <div id="eq6"></div>
+
+        Notice how on one hand we have the rate expression on the left side, and on the other side the difference of the differences divided by the size of the spatial step. <br>
+        The last term is used to 
+        relate the spatial step to the time step. This is also called the diffusion constant D. D is characteristic for each material and describes how quickly (space step per time step) diffusion occurs.
+        <div id="eq7"></div>
+
+        Now we can take the limit of the spatial step going to zero..
+
+        <div id="eq4"></div>
+        <div id="eq5"></div>
+        
+        .. to get the continuous version of the rate expression:
+
+        <div id="eq8"></div>
+
+        Notice the partial derivatives. This is because we are looking at the change of density over time and space at the same time. 
+
+    </div>
+    <div>
+        <h2>Going three-dimensional</h2>
+        <div id="eq13"></div>
+        <h2>Mass, Momentum, Energy</h2>
+        <div id="eq10"></div>
+        <div id="eq11"></div>
+        <div id="eq12"></div>
+    </div>
+
+<div>
+
+
+</div>
+<div>
+
+</div>
+
+</article><div class="display">
+
+
+</div>
+</div>
+
+
+</body>
+<script type="module" src="./diffusion.js"></script>
+<script type="module" src="./equations.js"></script>
+</html>
