@@ -11,8 +11,8 @@ html{
     font-family:Palatino,"Book Antiqua",Helvetica,Georgia,Arial,sans-serif
 }
 body{
+    background: #f7f7f1;
     line-height:1;
-    background:#f7f7f1;
     font:18px/1.4 Palatino,"Book Antiqua",Helvetica,Georgia,Arial,sans-serif;
     color:#2b2b3b
 }
@@ -165,8 +165,7 @@ h1,h2,h3,h4,h5,h6{
     margin:.8em 0 12px
 }
 h1{
-    font-size:28px;
-    margin-top: 40px;
+    font-size:28px
 }
 h2{
     font-size:22px
@@ -318,43 +317,4 @@ var{
         grid-template-columns:auto;
         grid-template-rows:repeat(auto-fit, auto)
     }
-}
-
-
-/* ──────────────────────────────────────────────────────────────
-   Thumbnail grid – always square, same size, white padding
-   ────────────────────────────────────────────────────────────── */
-   .thumb-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    margin-bottom: 20px;
-}
-.thumb {
-    --size: 150px;               /* ← change size here if you want */
-    width: var(--size);
-    height: var(--size);
-    overflow: hidden;
-    border: 1px solid #ddd;
-    background: #fff;           /* white background for padding */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.thumb2 {
-    --size: 250px;               /* ← change size here if you want */
-    width: var(--size);
-    height: var(--size);
-    overflow: hidden;
-    border: 1px solid #ddd;
-    background: #fff;           /* white background for padding */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.thumb img {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain;        /* keep aspect ratio, show white borders */
 }

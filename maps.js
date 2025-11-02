@@ -1,7 +1,7 @@
-const gpx_wildspitz = "gpx/route_2022-09-25_1.58pm.gpx"
-const gpx_rigikulm = "gpx/route_2022-10-22_8.30pm.gpx"
-const gpx_pilatus = "gpx/route_2022-10-30_6.55pm.gpx"
-const gpx_rigihochflue = "gpx/route_2023-02-25_3.40pm.gpx"
+const gpx_wildspitz = "assets/gpx/route_2022-09-25_1.58pm.gpx"
+const gpx_rigikulm = "assets/gpx/route_2022-10-22_8.30pm.gpx"
+const gpx_pilatus = "assets/gpx/route_2022-10-30_6.55pm.gpx"
+const gpx_rigihochflue = "assets/gpx/route_2023-02-25_3.40pm.gpx"
 
 const labelArr = ['Total distance [m]', 'Elevation min [m]', 'Elevation max [m]', 'Elevation gain [m]','Elevation loss [m]','Total time [h]']
 const labelFunction = ['get_distance()', 'get_elevation_min()', 'get_elevation_max()', 'get_elevation_gain()',  'get_elevation_loss()','get_total_time()/1000/3600']

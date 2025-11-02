@@ -38,53 +38,62 @@ crossorigin=""></script>
 
 <nav class="site">
 <a href="projects.html">Projects</a>
+<a href="hackathons.html">Hackathons</a>
 <a href="index.html">About</a>
 </nav>
 
 <article>
 <h1>Misc</h1>
-<div class="container-fluid">
 
-
-<div>
-    <div class="row" style="margin-top: 20px;">
-
+<div style="margin: 30px 0;">
+    <div style="margin-bottom: 40px;">
+        <h4 style="margin-top: 0;">
+            <a href="assets/Diffusion/index.html">
+                Diffusion
+            </a>
+        </h4>
+        <p style="margin: 8px 0; line-height: 1.6;">
+            Random Walk; Simple simulation of diffusion in 1D and 2D space.
+        </p>
+    </div>
     
-        <div class="col-6" style="font-weight: 550">
-
-            <a href="index.html">Diffusion <i style="font-size: small;"></i></a>
-        </div>
+    <div style="margin-bottom: 40px;">
+        <h4 style="margin-top: 0;">
+            <a href="https://frgoe003.github.io/LivingRPS/" target="_blank" rel="noopener">
+                LivingRPS
+            </a>
+        </h4>
+        <p style="margin: 8px 0; line-height: 1.6;">
+            Simple simulator where rock paper scissors agents compete against each other.
+        </p>
     </div>
-
-    <div>
-        Random Walk; Simple simulation of diffusion in 1D and 2D space.
-    </div>
-</div>
-
-<div>
-    <div class="row" style="margin-top: 20px;">
-
-        <div class="col-6" style="font-weight: 550">
-
-            <a href="https://frgoe003.github.io/LivingRPS/">LivingRPS <i style="font-size: small;"></i></a>
-        </div>
-    </div>
-
-    <div>
-        Simple simulator where rock paper scissors agents compete against each other.
+    
+    <div style="margin-bottom: 40px;">
+        <h4 style="margin-top: 0;">
+            <a href="assets/Connect4/index.html">
+                Connect 4 MCTS
+            </a>
+        </h4>
+        <p style="margin: 8px 0; line-height: 1.6;">
+            A simple Monte Carlo Tree Search (MCTS) for Connect 4. Play against it <a href="assets/Connect4/index.html">here</a>.
+        </p>
     </div>
 </div>
 
-<div class="row">
+<h6 style="font-size: 140%; margin-top: 30px;">Photography</h6>
+
+<div class="row" style="margin-top: 15px;">
     <h4>M31 - 28.02.22</h4>
     <div>
         <img id="img" src="assets/images/m31.png" style="width:70%;height:70%;">
     </div>
-    <button id="imgbtn" onclick="console.log('clicked'); picster()" style="margin-top: 10px;">show annotation</button>
+    <button id="imgbtn" onclick="picster()" style="margin-top: 10px;">show annotation</button>
     <p>
     Amateur shot of the Andromeda galaxy using a plain SLR and a lot of image processing. Result from ten stacked images.
     </p>
 </div>
+
+<h6 style="font-size: 140%; margin-top: 30px;">Hiking</h6>
 
 
 
@@ -183,15 +192,12 @@ crossorigin=""></script>
 
 
 
-</div>
-
-
+</article>
 
 <div class="display">
 </div>
 
 </body>
-</article>
 
 <script src="maps.js"></script>
 <script>
@@ -200,7 +206,9 @@ crossorigin=""></script>
     function picster() {
         let image = document.getElementById('img')
         let btn = document.getElementById('imgbtn')
-        if (image.src==="assets/images/m31.png"){
+        let currentSrc = image.src;
+        // Check if current src contains m31.png (handle both relative and absolute paths)
+        if (currentSrc.includes('m31.png') && !currentSrc.includes('m31_with_annotation')){
             image.src = "assets/images/m31_with_annotation.png"
             btn.innerHTML = "revert"
         }
