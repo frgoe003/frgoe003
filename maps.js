@@ -3,6 +3,16 @@ const gpx_rigikulm = "assets/gpx/route_2022-10-22_8.30pm.gpx"
 const gpx_pilatus = "assets/gpx/route_2022-10-30_6.55pm.gpx"
 const gpx_rigihochflue = "assets/gpx/route_2023-02-25_3.40pm.gpx"
 
+// Configure icon paths for Leaflet GPX plugin
+const gpxIconOptions = {
+  startIconUrl: 'assets/pin-icon-start.png',
+  endIconUrl: 'assets/pin-icon-end.png',
+  shadowUrl: 'assets/pin-shadow.png',
+  wptIconUrls: {
+    '': 'assets/pin-icon-wpt.png'
+  }
+}
+
 const labelArr = ['Total distance [m]', 'Elevation min [m]', 'Elevation max [m]', 'Elevation gain [m]','Elevation loss [m]','Total time [h]']
 const labelFunction = ['get_distance()', 'get_elevation_min()', 'get_elevation_max()', 'get_elevation_gain()',  'get_elevation_loss()','get_total_time()/1000/3600']
 let labelMap = labelArr.map((x, i) => [x, labelFunction[i]]);
@@ -95,7 +105,10 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map_rigihochflue);
 
-let gpx1 = new L.GPX(gpx_rigihochflue, {async: true}).on('loaded', function(e) {
+let gpx1 = new L.GPX(gpx_rigihochflue, {
+  async: true,
+  marker_options: gpxIconOptions
+}).on('loaded', function(e) {
   map_rigihochflue.fitBounds(e.target.getBounds());
   addStats('gpx1','t4')
   plot_elev_profile('gpx1','HR4')
@@ -107,7 +120,10 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map_pilatus);
 
-let gpx2 = new L.GPX(gpx_pilatus, {async: true}).on('loaded', function(e) {
+let gpx2 = new L.GPX(gpx_pilatus, {
+  async: true,
+  marker_options: gpxIconOptions
+}).on('loaded', function(e) {
   map_pilatus.fitBounds(e.target.getBounds());
   addStats('gpx2','t2')
   plot_elev_profile('gpx2','HR2')
@@ -119,7 +135,10 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map_rigikulm);
 
-let gpx3 = new L.GPX(gpx_rigikulm, {async: true}).on('loaded', function(e) {
+let gpx3 = new L.GPX(gpx_rigikulm, {
+  async: true,
+  marker_options: gpxIconOptions
+}).on('loaded', function(e) {
   map_rigikulm.fitBounds(e.target.getBounds());
   addStats('gpx3','t3')
   plot_elev_profile('gpx3','HR3')
@@ -131,7 +150,10 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map_wildspitz);
 
-let gpx4 = new L.GPX(gpx_wildspitz, {async: true}).on('loaded', function(e) {
+let gpx4 = new L.GPX(gpx_wildspitz, {
+  async: true,
+  marker_options: gpxIconOptions
+}).on('loaded', function(e) {
   map_wildspitz.fitBounds(e.target.getBounds());
   addStats('gpx4','t1')
   plot_elev_profile('gpx4','HR1')
