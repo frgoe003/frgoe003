@@ -1,3 +1,5 @@
 # ignore all in private folder
 private/
 .DS_Store
+/.vscode/
+.env
